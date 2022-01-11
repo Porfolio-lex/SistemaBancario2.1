@@ -1,0 +1,163 @@
+{% extends "Base.html"%}
+{% load static %}
+{% block title %} Inicio {% endblock %}
+{% block content%}
+<div id="Contenido">
+
+<div id="SeccionBotones" class="SeccionBotones content">
+    <div id="About">
+        <h3>Sobre nosotros</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, autem! Labore ipsam omnis delectus nesciunt autem, qui possimus hic inventore libero eligendi, at similique. Hic possimus labore praesentium aut optio.</p>
+        <a href="https://www.bancosantander.es/particulares" class="btn btn-info"> Mas Información!...</a>
+    </div>
+    <div id="Options">
+        <div id="createaccount" class="botones">
+            <input type="button" value="Crear Cuenta" class="btn btn-primary" id="createuser">
+        </div>
+        <div id="Transaction" class="botones">  
+            <input type="button" value="Transferir" class="btn btn-danger">
+        </div>
+        <div id="Retvalue" class="botones">
+            <input type="button" value="Retirar" class="btn btn-success">
+        </div>
+        <div id="Consultar" class="botones">
+            <input type="button" value="Consultar" class="btn btn-info">
+        </div>
+    </div>
+ 
+</div>    
+
+<div class="Add-User Content-Formulari" id="ContenFormulary">
+    <div>
+        <h3>Registro de Usuario</h3>
+        <img src="{% static 'img/cierre.jpg'%}" id="Cierre" class="Cierre">
+    </div>
+    
+    <form class="mt-5">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="name">Nombre</label>
+            <input type="text" class="form-control" id="name" placeholder="Ingrese su nombre">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="lastname">Apellido</label>
+            <input type="text" class="form-control" id="lastname" placeholder="Ingrese su apellido">
+          </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="cedula">Cédula</label>
+                <input type="text" class="form-control" id="cedula" placeholder="Ingrese su cédula">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="telefono">Teléfono</label>
+                <input type="text" class="form-control" id="telefono" placeholder="Ingrese su número de telefono">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputPassword">Contraseña</label>
+                <input type="password" class="form-control" id="inputPassword" placeholder="Ingrese su contraseña">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword1">Confirmar contraseña</label>
+                <input type="password" class="form-control" id="inputPassword1" placeholder="Verifique su contraseña">
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary text-center">Guardar</button>
+        </div>
+    </form>
+</div>
+
+<style>
+     
+    #Options{
+        width: 55%;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    .botones{
+        width: 330px;
+        height: 270px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 5px;
+        padding: 5px;
+        background-image: url(https://w0.peakpx.com/wallpaper/922/958/HD-wallpaper-simple-abstract-design-black-flat-modern-red-shapes-waves-white.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-origin: initial;
+        background-position: center;
+        background-color: aliceblue;
+    }
+    .SeccionBotones{
+        position: relative;
+        margin-top: 2%;
+        display: flex;
+        padding: 20px;
+        justify-content: space-around;
+    }
+    .Content-Formulari{
+        width: 88%;
+        padding: 20px;
+        margin-left: 6%;
+        margin-top: -580px;
+        border: none;
+        box-shadow: 3px 5px 8px black;
+        position: absolute;
+        display: none; 
+    }
+    .Cierre{
+        width: 35px;
+        height: 35px;
+        display: flex;
+        margin-top: -7%;
+        margin-left: 100%;
+        border-radius: 50%;
+    }
+    #About{
+        width: 35%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-image: url(https://thumbs.dreamstime.com/b/imagen-de-vector-fondo-empresarial-onda-roja-abstracta-resumen-negocios-fr%C3%ADo-hermoso-dise%C3%B1o-gr%C3%A1fico-ilustraci%C3%B3n-162544487.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-origin: initial;
+        background-position: center;
+
+    }
+</style>
+
+<script>
+    let createuser = document.getElementById("createuser");
+    createuser.addEventListener("click", ()=>{
+        
+        let ContenFormulary = document.getElementById("ContenFormulary");
+        ContenFormulary.style.display = "block";
+
+        let SeccionBotones = document.getElementById("SeccionBotones");
+        SeccionBotones.style.opacity= "0";
+
+    }); 
+
+    let Cierre = document.getElementById("Cierre");
+    Cierre.addEventListener("click", ()=>{
+        let ContenFormulary = document.getElementById("ContenFormulary");
+        ContenFormulary.style.display = "none";
+
+        let SeccionBotones = document.getElementById("SeccionBotones");
+        SeccionBotones.style.opacity= "1";
+    });
+</script>
+
+</div>
+
+{% endblock %}
