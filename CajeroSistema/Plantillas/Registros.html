@@ -5,75 +5,140 @@
 <div id="Contenido">
 
 <div id="SeccionBotones" class="SeccionBotones content">
-    <div id="About">
+    <div id="About" class="FondoContent">
         <h3>Sobre nosotros</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, autem! Labore ipsam omnis delectus nesciunt autem, qui possimus hic inventore libero eligendi, at similique. Hic possimus labore praesentium aut optio.</p>
         <a href="https://www.bancosantander.es/particulares" class="btn btn-info"> Mas Información!...</a>
     </div>
+
     <div id="Options">
-        <div id="createaccount" class="botones">
+        
+        <div id="createaccount" class="botones FondoContent">
+            <h3>Crear Cuenta</h3>
+            <p>Crea una cuenta y se miembro hoy mismo</p>
             <input type="button" value="Crear Cuenta" class="btn btn-primary" id="createuser">
         </div>
-        <div id="Transaction" class="botones">  
-            <input type="button" value="Transferir" class="btn btn-danger">
+
+        <div id="Transaction" class="botones FondoContent">  
+            <h3>Transferencia Bancaria</h3>
+            <p>Transferencias seguras con nosotros</p>
+            <a href="/Transaccion/" class="btn btn-danger" > Transferencia </a>
         </div>
-        <div id="Retvalue" class="botones">
-            <input type="button" value="Retirar" class="btn btn-success">
+
+        <div id="Retvalue" class="botones FondoContent">
+            <h3>Retiro</h3>
+            <p>Siempre que quieras podras retirar tus efectivo</p>
+            <a href="/Retiro/" class="btn btn-danger" > Retiro </a>
         </div>
-        <div id="Consultar" class="botones">
-            <input type="button" value="Consultar" class="btn btn-info">
+        <div id="Consultar" class="botones FondoContent">
+            <h3>Deposito</h3>
+            <p>Deposita a cualquier hora en cualquier lugar</p>
+            <a href="/Deposito/" class="btn btn-primary" > Depositar </a> 
         </div>
     </div>
  
 </div>    
 
-<div class="Add-User Content-Formulari" id="ContenFormulary">
-    <div>
-        <h3>Registro de Usuario</h3>
-        <img src="{% static 'img/cierre.jpg'%}" id="Cierre" class="Cierre">
+<div class="Add-User1 Content-Formulari" id="ContenFormulary">
+ 
+    <div id="FondoImg">
+        
     </div>
     
-    <form class="mt-5">
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="name">Nombre</label>
-            <input type="text" class="form-control" id="name" placeholder="Ingrese su nombre">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="lastname">Apellido</label>
-            <input type="text" class="form-control" id="lastname" placeholder="Ingrese su apellido">
-          </div>
+    <div id="RegistroUser">
+        <div>
+            <h3>Registro de Usuario</h3>
+            <img src="{% static 'img/cierre.jpg'%}" id="Cierre" class="Cierre">
         </div>
+        
+        <form method="post" class="mt-5" id="FormularyUser">
+            {% csrf_token %}
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="first_name">Nombre</label>
+                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Ingrese su nombre">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="last_name">Apellido</label>
+                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Ingrese su apellido">
+              </div>
+            </div>
+    
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="Cedula">Cédula</label>
+                    <input type="text" class="form-control" id="Cedula" name="Cedula" placeholder="Ingrese su cédula">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="Telefono">Teléfono</label>
+                    <input type="text" class="form-control" id="Telefono" name="Telefono" placeholder="Ingrese su número de telefono">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="email">Correo</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Ingrese su correo">
+                </div>
+                <div class="form-group col-md-6">
+                        <label for="username">Nombre de Usuario</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Ingrese nombre de usuario">
+                </div>
+            </div>
+    
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="password1">Contraseña</label>
+                    <input type="password" class="form-control" id="password1" name="password1" placeholder="Ingrese su contraseña">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="password2">Confirmar contraseña</label>
+                    <input type="password" class="form-control" id="password2" name="password2" placeholder="Verifique su contraseña">
+                </div>
+            </div>
+    
+    
+            <div class="form-row">
+                
+                <div class="form-group col-md-6">
+                    <label for="Saldo">Saldo Inicial</label>
+                    <input type="number" class="form-control" id="Saldo" name="Saldo" placeholder="Verifique su contraseña">
+                </div>
+                
+                <div class="form-group col-md-6">
+                    <label for="" style="opacity: 0;">Enviar</label>
+                    <button type="submit" id="SendFormulary" class=" form-control btn btn-primary text-center">Guardar</button>
+                </div>
+            </div>
+            <input type="number" class="form-control" id="NumeroCuenta" name="NumeroCuenta" placeholder="Number cunt" style="opacity: 0;">
+        </form>
+    </div>
 
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="cedula">Cédula</label>
-                <input type="text" class="form-control" id="cedula" placeholder="Ingrese su cédula">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="telefono">Teléfono</label>
-                <input type="text" class="form-control" id="telefono" placeholder="Ingrese su número de telefono">
-            </div>
-        </div>
-
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputPassword">Contraseña</label>
-                <input type="password" class="form-control" id="inputPassword" placeholder="Ingrese su contraseña">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="inputPassword1">Confirmar contraseña</label>
-                <input type="password" class="form-control" id="inputPassword1" placeholder="Verifique su contraseña">
-            </div>
-        </div>
-        <div class="text-center mt-4">
-            <button type="submit" class="btn btn-primary text-center">Guardar</button>
-        </div>
-    </form>
 </div>
 
 <style>
-     
+    
+    .Add-User1{
+        display: flex;
+        justify-content: space-around;
+        width: 120%;
+    }
+    #FondoImg{
+        width: 70%;
+        height: auto;
+        margin: 10px;
+        background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeCDPouKyF9Opi7xZOAI-9a8SDWO77EdY9--S4nqRvjULKWfj6R0eXMZSObnPxGn311jQ&usqp=CAU);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-origin: initial;
+    }
+    #RegistroUser{
+        width: 50%;
+        padding: 20px;
+        margin: 10px;
+        box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    }
+    
     #Options{
         width: 55%;
         display: flex;
@@ -81,6 +146,7 @@
         flex-wrap: wrap;
     }
     .botones{
+        color: antiquewhite;
         width: 330px;
         height: 270px;
         display: flex;
@@ -104,12 +170,11 @@
         justify-content: space-around;
     }
     .Content-Formulari{
-        width: 88%;
+        width: 95%;
         padding: 20px;
-        margin-left: 6%;
+        margin-left: 2%;
         margin-top: -580px;
         border: none;
-        box-shadow: 3px 5px 8px black;
         position: absolute;
         display: none; 
     }
@@ -117,7 +182,7 @@
         width: 35px;
         height: 35px;
         display: flex;
-        margin-top: -7%;
+        margin-top: -15%;
         margin-left: 100%;
         border-radius: 50%;
     }
@@ -137,11 +202,55 @@
 </style>
 
 <script>
+const FondoPrincipal = document.getElementById("FondoPrincipal");
+FondoPrincipal.style.display ="none"; 
+
+const postForm = document.querySelector("#FormularyUser");
+function handleSubmit(postForm) {
+    postForm.addEventListener("submit", e => {
+        e.preventDefault();
+        formData = new FormData(postForm);
+        fetch('/AgregarUsuario/', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                
+               let numeroc = data;
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Registro Exitoso!',
+                    text: `Su numero de cuenta es ${numeroc.NumeroCuenta}`,
+                    showConfirmButton: true,
+                    timer: 1500
+                });
+                postForm.reset();
+                
+            })
+            .catch((error) => {
+                Swal.fire({
+                    icon: 'warning',
+                    title: '¡No se pudo crear el usuario!',
+                    text: `Verifique su conexión o intente mas tarde`,
+                    showConfirmButton: true,
+                    timer: 1500
+                });
+            });
+    })
+}
+
+handleSubmit(postForm)
+</script>
+    
+<script>
+    
+    
     let createuser = document.getElementById("createuser");
     createuser.addEventListener("click", ()=>{
         
         let ContenFormulary = document.getElementById("ContenFormulary");
-        ContenFormulary.style.display = "block";
+        ContenFormulary.style.display = "flex";
 
         let SeccionBotones = document.getElementById("SeccionBotones");
         SeccionBotones.style.opacity= "0";
@@ -152,10 +261,26 @@
     Cierre.addEventListener("click", ()=>{
         let ContenFormulary = document.getElementById("ContenFormulary");
         ContenFormulary.style.display = "none";
-
         let SeccionBotones = document.getElementById("SeccionBotones");
         SeccionBotones.style.opacity= "1";
     });
+</script>
+
+<script>
+    let ArregloImagenes = [
+        "https://img.freepik.com/foto-gratis/fondo-doble-exposicion-comunicacion-empresarial_31965-2379.jpg?size=626&ext=jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAOG7yw23xh2TKn0UgmVQQoClylmS7sF7V_A&usqp=CAU",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZGmopdr93MKQAH3lJ-CthJUQFrXXaCeUnMA&usqp=CAU",
+        "https://almomento.mx/wp-content/uploads/2021/07/CONFIANZA-1-min.jpg",
+        "https://d500.epimg.net/cincodias/imagenes/2020/02/26/opinion/1582734357_362687_1582734601_noticia_normal.jpg"
+    ]
+    let FondoContent = document.querySelectorAll('.FondoContent');
+    for(let indexx =0; indexx< FondoContent.length; indexx++){
+
+        FondoContent[indexx].style.backgroundImage= `url(${ArregloImagenes[indexx]})`;
+        FondoContent[2].style.color= "rgb(12, 1, 1)";
+        FondoContent[1].style.color= "rgb(12, 1, 1)";
+    }
 </script>
 
 </div>

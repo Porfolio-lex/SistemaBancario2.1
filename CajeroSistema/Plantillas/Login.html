@@ -18,10 +18,11 @@
               </div>
           
               <!-- Login Form -->
-              <form>
-                <input type="text" id="username" class="fadeIn second" name="login" placeholder="Username">
-                <input type="text" id="password" class="fadeIn third" name="login" placeholder="Password">
-                <input type="submit" class="fadeIn fourth" value="Log In">
+              <form action="/login/" method="post">
+                {% csrf_token %}
+                <input type="text" id="username" class="fadeIn second" name="username" placeholder="correo">
+                <input type="password" id="password" class="fadeIn third" name="password" placeholder="contraseña">
+                <input type="submit" class="fadeIn fourth" value="Ingresar">
               </form>
           
               <!-- Remind Passowrd -->
@@ -58,7 +59,7 @@
     }
     
     .Login{
-        background-color: yellow;
+        background-color: rgb(228, 25, 25);;
         width: 30%;
         margin: 10px;
         height: 10px;
@@ -66,6 +67,9 @@
 </style>
 
 <style>
+    #WithoutSession{
+      display: none;
+    }
     html {
         background-color: #56baed;
       }
@@ -147,9 +151,9 @@
       /* FORM TYPOGRAPHY*/
       
       input[type=button], input[type=submit], input[type=reset]  {
-        background-color: #56baed;
+        background-color: rgb(228, 25, 25);;
         border: none;
-        color: white;
+        color: rgb(3, 0, 0);
         padding: 15px 80px;
         text-align: center;
         text-decoration: none;
@@ -169,7 +173,7 @@
       }
       
       input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-        background-color: #d5d81d;
+        background-color: rgb(228, 25, 25);
       }
       
       input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
@@ -180,7 +184,7 @@
         transform: scale(0.95);
       }
       
-      input[type=text] {
+      input[type=text],input[type=password] {
         background-color: #f6f6f6;
         border: none;
         color: #0d0d0d;
@@ -224,5 +228,10 @@
         animation-fill-mode: both;
       }
 </style>
+
+<script>
+  const FondoPrincipal = document.getElementById("FondoPrincipal");
+  FondoPrincipal.style.display ="none"; 
+</script>
 
 {% endblock %}

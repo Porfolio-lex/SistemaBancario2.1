@@ -1,7 +1,8 @@
+from typing_extensions import Required
 from django.db import models
 from django.db.models.fields import AutoField, CharField
 from django.contrib.auth.models import  AbstractUser, PermissionsMixin, User
-from djongo import models as dj
+from djongo import models as modelsmongo
 
 # Create your models here.
 class Prueba(models.Model):
@@ -13,13 +14,14 @@ class Card(models.Model):
     cardmoney = models.CharField(max_length=20)
     carlock = models.CharField(max_length=20)
 
-class Person(AbstractUser):
-     name = models.CharField(primary_key=True, max_length=20)
-     Cedula = models.CharField(max_length=20)
-     Telefono = models.CharField(max_length=20)
-     NumeroCuenta = models.CharField(max_length=20)
+class Person(AbstractUser):       
+     _id = modelsmongo.ObjectIdField()
+     Cedula = modelsmongo.IntegerField()
+     Telefono = modelsmongo.IntegerField()
+     NumeroCuenta = modelsmongo.IntegerField(null=True, blank=True)
+     Saldo = modelsmongo.IntegerField()
      #Modificamos el email para que sea unico, y asi poder iniciar sesión con el 
-     email = models.EmailField(
+     email = modelsmongo.EmailField(
         ("email address"),
         unique=True
      )

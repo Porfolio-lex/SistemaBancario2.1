@@ -8,27 +8,28 @@ class RegistroForm(UserCreationForm):
     class Meta:
         model = Person
         fields = [
-                'id',
                 'first_name',
+                'last_login',
                 'last_name',
                 'username',
                 'email',
                 'Cedula',
                 'Telefono',
                 'NumeroCuenta',
+                'Saldo',
                 'password1',
                 'password2'
             ]
         Labels = {
-                'id':'id',
                 'first_name':'Nombres',
                 'last_name':'Apellidos',
+                'last_login':'last_login',
                 'username':'Nombre de usuario',
                 'email':'Correo',
-                'Perfil':'Perfiles',
                 'Cedula':'Cedula',
                 'Telefono':'Telefono',
                 'NumeroCuenta':'NumeroCuenta',
+                'Saldo':'Saldo',
                 'password1':'password1',
                 'password2':'password2'
         }

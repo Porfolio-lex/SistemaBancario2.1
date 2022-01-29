@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+#Mensajes de errores
+MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
 
 # Application definition
 
@@ -81,7 +83,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'CLIENT':{
-            "host":"mongodb://administrador:asd123@serverquito:27017,servermanta:27017,serverguayaquil:27017/?authSource=admin&replicaSet=rsfacci&w=majority&wtimeoutMS=5000",
+            #"host":"mongodb://administrador:asd123@localhost:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false",
+            "host":"mongodb://administrador:asd123@server-astudillo:27017,server-sanchez:27017,server-lopez:27017,server-kohls:27017/?authSource=admin&replicaSet=rsgrupouno&w=majority&wtimeoutMS=4000",
+            #"host":"mongodb://administrador:asd123@serverquito:27017,servermanta:27017,serverguayaquil:27017/?authSource=admin&replicaSet=rsfacci&w=majority&wtimeoutMS=5000",
             #"host":"mongodb://administrador:asd123@servermanta:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false",
             "name":"clientes"
         }
@@ -135,4 +139,4 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
-LOGIN_REDIRECT_URL = '/Home/'
+LOGIN_REDIRECT_URL = 'Registro'

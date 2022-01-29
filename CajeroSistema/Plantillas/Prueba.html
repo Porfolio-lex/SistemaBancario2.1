@@ -1,12 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <p>{{Usuario}}</p>
-</body>
-</html>
+{% extends "Base.html"%}
+{% load static %}
+{% block title %} Inicio {% endblock %}
+{% block content%}
+
+<div id="ContenidoUsuarios" class="mt-5 mb-5">
+    
+    
+    <table class="table table-sm">
+        <thead>
+          <tr>
+            <th scope="col">Cedúla</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Número de Cuenta</th>
+            <th scope="col">Saldo</th>
+            <th scope="col">Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+            {%for user in Usuario%}
+            <tr>
+                <th scope="row">{{user.Cedula}}</th>
+                <td>{{user.first_name}} {{user.last_name}}</td>
+                <td>{{user.Telefono}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.NumeroCuenta}}</td>
+                <td>{{user.Saldo}}</td>
+                <td><a href="/DeleteUser/{{user.NumeroCuenta}}" class="btn btn-danger"> Eliminar</a></td>
+            </tr>
+            {%endfor%}
+        </tbody>
+      </table>
+
+
+    <script>
+        const FondoPrincipal = document.getElementById("FondoPrincipal");
+        FondoPrincipal.style.display ="none"; 
+    </script>
+
+
+</div>
+
+{% endblock %}

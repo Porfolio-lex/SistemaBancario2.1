@@ -19,14 +19,27 @@ from django.urls import path
 from Transaccion import views
 
 from django.conf import settings
+from django.urls.conf import include
 from django.contrib.auth.decorators import login_required
 
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('Prueba/', views.Datos),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('ListaUsuarios/', views.Datos),
     path('Home/', views.Home),
-    path('Registro/', views.Registro),
-    path('login/', views.Login)
+    path('Registro/', views.Registro, name='Registro'),
+    path('login/', views.LoginInit),
+    path('logout/', views.LogoIn),
+    path('AgregarUsuario/', views.AddPerson),
+    path('Transaccion/', login_required(views.Transferir)),
+    path('BuscarCuenta/<cuenta>/', views.BuscarCuentas),
+    path('ProcesoTransferencia/', views.ProcesoTransferencia),
+    path('Retiro/', views.Retiro),
+    path('Deposito/', views.Deposito),
+    path('Informacion/', views.Info),
+    path('AgregarSaldo/', views.AddSaldo),
+    path('DeleteUser/<cuentaN>', views.delete)
+
 ]
