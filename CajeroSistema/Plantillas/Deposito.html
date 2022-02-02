@@ -1,0 +1,135 @@
+{% extends "Base.html"%}
+{% load static %}
+{% block title %} Inicio {% endblock %}
+{% block content%}
+
+<div class="Add-User1 Content-Formulari" id="ContenFormulary">
+    
+    <div id="FondoImg">
+        
+    </div>
+
+    <div id="RegistroUser">
+        <div>
+            <h3>Proceso Deposito</h3>
+            <a href="/Registro/">
+                <img src="{% static 'img/cierre.jpg'%}" id="Cierre" class="Cierre">
+            </a>
+        </div>
+        
+        <form method="post" class="mt-5" id="FormularyAdd">
+            {% csrf_token %}
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="NumeroCuenta">Número de cuenta</label>
+                <input type="text" class="form-control" id="NumeroCuenta" name="NumeroCuenta" value={{user.NumeroCuenta}} readonly>
+              </div>
+    
+              <div class="form-group col-md-6">
+                <label for="SaldoA">Su saldo actual es</label>
+                <input type="text" class="form-control" id="SaldoA" name="SaldoA" value={{user.Saldo}} readonly>
+              </div>
+            </div>
+    
+            <div class="form-row">
+                
+                <div class="form-group col-md-6">
+                    <label for="SaldoR">Cantidad a Depositar</label>
+                    <input type="number" class="form-control" id="SaldoR" name="SaldoR" placeholder="Cantidad que desea depositar">
+                </div>
+                
+                <div class="form-group col-md-6">
+                    <label for="" style="opacity: 0;">Transferir</label>
+                    <button id="AgregarSaldo" class=" form-control btn btn-primary text-center">Guardar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        const FondoPrincipal = document.getElementById("FondoPrincipal");
+        FondoPrincipal.style.display ="none"; 
+        
+
+        let AgregarSaldo = document.getElementById("AgregarSaldo");
+        let Saldo = document.getElementById("SaldoR");
+
+        const postForm = document.querySelector("#FormularyAdd");
+        function handleSubmit(postForm) {
+        postForm.addEventListener("submit", e => {
+            e.preventDefault();
+            formData = new FormData(postForm);
+            fetch('/AgregarSaldo/', {
+                    method: 'POST',
+                    body: formData,
+                })
+            .then(response => response.json())
+            .then(data => {
+               
+                Swal.fire({
+                    icon: 'success',
+                    title: ` ${data.Mensaje}`,
+                    text: `Su salgo actual es ${data.SaldoActual}`,
+                    showConfirmButton: true,
+                    timer: 1500
+                });
+                  
+               postForm.reset();
+                
+            })
+            .catch((error) => {
+                let err = error;
+                 console.log(err)
+            });
+        })
+    }
+
+        handleSubmit(postForm)
+    </script>
+
+    <style>
+
+        .Add-User1{
+            display: flex;
+            justify-content: space-around;
+            width: 120%;
+        }
+        #FondoImg{
+            width: 70%;
+            height: auto;
+            margin: 10px;
+            background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeCDPouKyF9Opi7xZOAI-9a8SDWO77EdY9--S4nqRvjULKWfj6R0eXMZSObnPxGn311jQ&usqp=CAU);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-origin: initial;
+        }
+        #RegistroUser{
+            width: 50%;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+        }
+
+        .Content-Formulari{
+            width: 95%;
+            padding: 20px;
+            margin-left: 2%;
+            margin-top: 50px;
+            border: none;
+            display: flex; 
+        }
+        .Cierre{
+            width: 35px;
+            height: 35px;
+            display: flex;
+            margin-top: -15%;
+            margin-left: 100%;
+            border-radius: 50%;
+        }
+    </style>
+    
+
+</div>
+
+{% endblock %}
